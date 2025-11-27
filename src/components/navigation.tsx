@@ -1,6 +1,13 @@
 import { Book, DollarSign, Ellipsis, Plus, Settings } from 'lucide-react';
-import { DiscordIcon, GithubIcon, HeartFilledIcon, Logo, SearchIcon, TwitterIcon } from '@/components/icons';
 import { Navbar as HeroUINavbar, NavbarBrand, NavbarContent, NavbarItem } from '@heroui/navbar';
+import { Button } from '@heroui/button';
+import { Input } from '@heroui/input';
+import { Kbd } from '@heroui/kbd';
+import { Link } from '@heroui/link';
+import clsx from 'clsx';
+import { link as linkStyles } from '@heroui/theme';
+import { useLocation } from 'react-router-dom';
+
 import {
   Sidebar as InternalSidebar,
   SidebarContent,
@@ -25,15 +32,9 @@ import {
   useSidebar,
 } from './sidebar';
 
-import { Button } from '@heroui/button';
-import { Input } from '@heroui/input';
-import { Kbd } from '@heroui/kbd';
-import { Link } from '@heroui/link';
-import { ThemeSwitch } from '@/components/theme-switch';
-import clsx from 'clsx';
-import { link as linkStyles } from '@heroui/theme';
 import { siteConfig } from '@/config/site';
-import { useLocation } from 'react-router-dom';
+import { ThemeSwitch } from '@/components/theme-switch';
+import { DiscordIcon, GithubIcon, HeartFilledIcon, Logo, SearchIcon, TwitterIcon } from '@/components/icons';
 
 export const Sidebar = () => {
   const { state, isMobile } = useSidebar();
