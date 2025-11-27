@@ -1,5 +1,5 @@
+import { Book, DollarSign, Ellipsis, Plus, Settings } from 'lucide-react';
 import { DiscordIcon, GithubIcon, HeartFilledIcon, Logo, SearchIcon, TwitterIcon } from '@/components/icons';
-import { Ellipsis, Kanban, LayoutDashboard, Plus, Settings } from 'lucide-react';
 import { Navbar as HeroUINavbar, NavbarBrand, NavbarContent, NavbarItem } from '@heroui/navbar';
 import {
   Sidebar as InternalSidebar,
@@ -33,9 +33,12 @@ import { ThemeSwitch } from '@/components/theme-switch';
 import clsx from 'clsx';
 import { link as linkStyles } from '@heroui/theme';
 import { siteConfig } from '@/config/site';
+import { useLocation } from 'react-router-dom';
 
 export const Sidebar = () => {
   const { state, isMobile } = useSidebar();
+
+  const { pathname } = useLocation();
 
   return (
     <InternalSidebar collapsible="icon" side="left">
@@ -68,9 +71,9 @@ export const Sidebar = () => {
           </SidebarMenuItem>
 
           <SidebarMenuItem>
-            <SidebarMenuButton isActive as={Link} href="#" tooltip="Dashboard">
-              <LayoutDashboard />
-              <span>Dashboard</span>
+            <SidebarMenuButton as={Link} href="/docs" isActive={pathname === '/docs'} tooltip="Docs">
+              <Book />
+              <span>Docs</span>
             </SidebarMenuButton>
             <SidebarMenuBadge>4</SidebarMenuBadge>
           </SidebarMenuItem>
@@ -90,9 +93,9 @@ export const Sidebar = () => {
             </SidebarGroupAction>
             <SidebarGroupContent>
               <SidebarMenuItem>
-                <SidebarMenuButton as={Link} href="#" tooltip="Kanban">
-                  <Kanban />
-                  <span>Kanban</span>
+                <SidebarMenuButton as={Link} href="/pricing" isActive={pathname === '/pricing'} tooltip="Kanban">
+                  <DollarSign />
+                  <span>Pricing</span>
                 </SidebarMenuButton>
                 <SidebarMenuAction>
                   <Ellipsis />
@@ -104,14 +107,18 @@ export const Sidebar = () => {
           <SidebarMenuItem>
             <SidebarMenuButton>
               <Settings />
-              <span>Settings</span>
+              <span>Public</span>
             </SidebarMenuButton>
             <SidebarMenuSub>
               <SidebarMenuSubItem>
-                <SidebarMenuSubButton isActive>Workspace</SidebarMenuSubButton>
+                <SidebarMenuSubButton as={Link} href="/blog" isActive={pathname === '/blog'}>
+                  Blog
+                </SidebarMenuSubButton>
               </SidebarMenuSubItem>
               <SidebarMenuSubItem>
-                <SidebarMenuSubButton>User</SidebarMenuSubButton>
+                <SidebarMenuSubButton as={Link} href="/about" isActive={pathname === '/about'}>
+                  About
+                </SidebarMenuSubButton>
               </SidebarMenuSubItem>
             </SidebarMenuSub>
           </SidebarMenuItem>
